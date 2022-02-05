@@ -3,6 +3,7 @@ package com.br.generation.BlogPessoal.Repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.br.generation.BlogPessoal.Model.Postagem;
 
@@ -15,6 +16,7 @@ import com.br.generation.BlogPessoal.Model.Postagem;
  *
  */
 
+@Repository
 public interface PostagemRepository extends JpaRepository<Postagem, Long>{
 
 	List<Postagem> findAllByTituloContainingIgnoreCase(String titulo);

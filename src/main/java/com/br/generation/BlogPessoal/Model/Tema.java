@@ -36,6 +36,8 @@ public class Tema {
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tema")
 	private List<Postagem> postagem;
+	
+	// Getters And Setter
 
 	public Long getId() {
 		return id;

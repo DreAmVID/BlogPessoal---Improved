@@ -54,6 +54,8 @@ public class Postagem {
 	@JoinColumn(name = "tema_id") // Cria uma coluna com o ID da chave estrangeira no lado "Forte" da relação
 	private Tema tema;
 	
+	// Relacionamento com a Model Usuário
+	
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	@JoinColumn(name = "usuario_id")
