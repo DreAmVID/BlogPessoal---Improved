@@ -44,7 +44,7 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Usuario>> findAllByNome(String nome){
+	public ResponseEntity<List<Usuario>> findAllByNome(@PathVariable String nome){
 		List<Usuario> list = repository.findAllByNomeContainingIgnoreCase(nome);
 		
 		if(list.isEmpty()) {
