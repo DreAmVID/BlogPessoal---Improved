@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -16,7 +17,8 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * Classe postagem utilizada como Entidade para postagem no Banco de dados
+ * Classe postagem utilizada como Entidade para postagem no Banco de dados, relacionamento
+ * muitos para um com a tabela Tema
  * @author @DreAmVID
  * @since 1.0
  * @date 04-02-2022
@@ -48,6 +50,7 @@ public class Postagem {
 	
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")	
+	@JoinColumn(name = "tema_id") // Cria uma coluna com o ID da chave estrangeira no lado "Forte" da relação
 	private Tema tema;
 
 	// Getters And Setter

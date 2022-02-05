@@ -13,6 +13,15 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * Classe tema utilizada como Entidade para postagem no Banco de dados, relacionamento
+ * um para muito com a tabela de Postagens.
+ * @author @DreAmVID
+ * @since 1.0
+ * @date 04-02-2022
+ *
+ */
+
 @Entity
 @Table
 public class Tema {
