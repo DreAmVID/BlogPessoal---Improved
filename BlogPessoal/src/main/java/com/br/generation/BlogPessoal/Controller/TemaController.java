@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.br.generation.BlogPessoal.Model.Tema;
 import com.br.generation.BlogPessoal.Repository.TemaRepository;
 
-@RequestMapping("/temas")
+@RequestMapping("/tema")
 @CrossOrigin (origins = "*", allowedHeaders = "*")
 @RestController
 public class TemaController {

@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * Classe postagem utilizada como Entidade para postagem no Banco de dados, relacionamento
  * muitos para um com a tabela Tema
+ * relacionamento muitos para um com a tabela Usuario
  * @author @DreAmVID
  * @since 1.0
  * @date 04-02-2022
@@ -52,6 +53,11 @@ public class Postagem {
 	@JsonIgnoreProperties("postagem")	
 	@JoinColumn(name = "tema_id") // Cria uma coluna com o ID da chave estrangeira no lado "Forte" da relação
 	private Tema tema;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	@JoinColumn(name = "usuario_id")
+	private Usuario usuario;
 
 	// Getters And Setter
 	
