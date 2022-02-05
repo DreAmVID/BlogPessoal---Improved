@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -81,15 +83,32 @@ public class PostagemController {
 	public ResponseEntity<Postagem> CriarUmPost(@RequestBody Postagem conteudo) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(conteudo));	
 	}
+
+	/**
+	 * Método para editar através da body uma postagem.
+	 * @author @DreAmVID
+	 * @since 1.0
+	 * @date 04-02-2022
+	 *
+	 */
 	
+	@PutMapping	
+	public ResponseEntity<Postagem> EditarUmPost(@RequestBody Postagem conteudo) {
+		return ResponseEntity.status(HttpStatus.OK).body(repository.save(conteudo));	
+	}
 	
+	/**
+	 * Método para deletar uma postagem através do numero de ID.
+	 * @author @DreAmVID
+	 * @since 1.0
+	 * @date 04-02-2022
+	 *
+	 */
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	@DeleteMapping("/{id}")
+	public void DeletarUmPost(@PathVariable long id) {
+		repository.deleteById(id);
+		
+	}
+		
 }
