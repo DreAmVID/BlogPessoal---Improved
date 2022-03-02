@@ -13,6 +13,26 @@ public class UserLogin {
 	@NotBlank(message = "Necessario Email")
 	@Email(message = "O usuario deve seguir o padrão usuario@email.com")
 	private String usuario;
+	
+	private String foto;
+	
+	private String tipo;
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 
 	private String senha;
 
