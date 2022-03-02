@@ -22,8 +22,8 @@ import com.br.generation.BlogPessoal.Repository.UsuarioRepository;
 import com.br.generation.BlogPessoal.Service.UsuarioService;
 
 @RestController
-@RequestMapping("/usuarios")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
 	@Autowired
@@ -69,11 +69,11 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Usuario> Cadastrar(@RequestBody Usuario user){
+	public ResponseEntity<Usuario> Post(@RequestBody Usuario user){
 		return service.CadastrarUsuario(user)
 				.map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
 				.orElseGet(() -> { 
-					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!");
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuario já cadastrado!");
 				});
 	}
 	
