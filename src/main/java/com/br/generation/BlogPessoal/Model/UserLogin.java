@@ -1,50 +1,26 @@
 package com.br.generation.BlogPessoal.Model;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-
 public class UserLogin {
 
-	private long id;
+	private Long id;
 	
-	@NotBlank(message = "O atributo nome não pode estar em branco")
 	private String nome;
-
-	@NotBlank(message = "Necessario Email")
-	@Email(message = "O usuario deve seguir o padrão usuario@email.com")
-	private String usuario;
 	
 	private String foto;
 	
-	private String tipo;
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-
+	private String usuario;
+	
 	private String senha;
-
+	
 	private String token;
 	
-	// Metódos Getters and Setters
+	private String tipo;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -79,5 +55,22 @@ public class UserLogin {
 	public void setToken(String token) {
 		this.token = token;
 	}
-		
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	
 }

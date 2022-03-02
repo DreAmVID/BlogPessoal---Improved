@@ -14,7 +14,7 @@ import com.br.generation.BlogPessoal.Repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-	
+
 	@Autowired
 	private UsuarioRepository repository;
 
@@ -55,11 +55,13 @@ public class UsuarioService {
 				user.get().setNome(usuario.get().getNome());
 				
 				user.get().setFoto(usuario.get().getFoto());
+
+				user.get().setSenha(usuario.get().getSenha());
 				
 				user.get().setTipo(usuario.get().getTipo());
 
 				return user;
-			} 
+			}
 		}
 
 		return null;

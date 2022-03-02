@@ -10,56 +10,53 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import io.swagger.v3.oas.annotations.media.Schema;
-
 @Entity
-@Table(name = "tb_usuarios")
+@Table(name = "tb_usuario")
 public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@NotNull(message = "O atributo Nome é Obrigatório!")
+	
+	@NotNull(message = "O atributo nome é obrigatório.")
+	@Size(min = 2, max = 100, message = "O nome deve conter pelo menos 2 caracteres.")
 	private String nome;
-
-	@Size(max = 5000, message = "O link da foto não pode ser maior do que 5000 caractéres")
+	
+	@Size(max = 5000, message = "O link da foto não pode ser maior do que 5000 caracteres")
 	private String foto;
-
-	@Schema(example = "email@email.com")
-	@NotNull(message = "O atributo Usuário é Obrigatório!")
-	@Email(message = "O atributo Usuário deve ser um email válido, no formato usuario@email.com")
+	
+	@Email(message = "O atributo usuario deve ser um email.")
+	@NotNull(message = "O atributo usuario é obrigatório.")
+	@Size(min = 4, max = 100, message = "O usuario deve conter pelo menos 5 caracteres.")
 	private String usuario;
-
-	@NotBlank(message = "O atributo Senha é Obrigatório!")
-	@Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
+	
+	@NotNull(message = "O atributo senha é obrigatório.")
+	@Size(min = 4, message = "A senha deve conter pelo menos 5 caracteres.")
 	private String senha;
 	
 	private String tipo;
 	
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("usuario")
+	private List<Postagem> postagens;
+	
+	
+	public Usuario(long id, String nome, String foto, String usuario, String senha, String tipo) {
+		this.id = id;
+		this.nome = nome;
+		this.foto = foto;
+		this.usuario = usuario;
+		this.senha = senha;
 		this.tipo = tipo;
 	}
 
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("usuario")
-	private List<Postagem> postagem;
-	
-	// Getters and Setters
-
-	public Usuario(long l, String string, String string2, String string3, String string4) {
-		// TODO Auto-generated constructor stub
-	}
+	public Usuario() {}
 
 	public Long getId() {
 		return id;
@@ -101,13 +98,21 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public List<Postagem> getPostagem() {
-		return postagem;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setPostagem(List<Postagem> postagem) {
-		this.postagem = postagem;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
-		
+	
+	public List<Postagem> getPostagens() {
+		return postagens;
+	}
+
+	public void setPostagens(List<Postagem> postagens) {
+		this.postagens = postagens;
+	}
+
 }
 
